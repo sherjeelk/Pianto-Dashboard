@@ -1,0 +1,106 @@
+<app-session-expire></app-session-expire>
+
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Review Details</h3>
+            </div>
+<!--            <div class="col-4 text-right">-->
+<!--              <a (click)="addReview()" class="btn btn-sm btn-primary">Save</a>-->
+<!--              <a class="btn btn-sm btn-danger" routerLink="/reviews">Cancel</a>-->
+<!--            </div>-->
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="addReviewForm">
+            <h6 class="heading-small text-muted mb-4">Review information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-3 col-md-6">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label  for="input-username">Name</mat-label>
+                    <input matInput  formControlName="name" id="input-username"
+                           placeholder="Full Name" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label  for="input-lastname">Comment</mat-label>
+                    <input matInput  formControlName="comment" id="input-lastname"
+                           placeholder="Comment" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label  for="input-email">Rating</mat-label>
+                    <input matInput  formControlName="rating" id="input-email"
+
+                           placeholder="Rating" type="number" maxlength="1">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label  for="input-username">User</mat-label>
+                    <input matInput  formControlName="user" id="input-phone"
+                           placeholder="User" type="text">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                  <mat-form-field appearance="outline" *ngIf="!userId" class="form-group">
+                    <mat-label  for="input-password">Order</mat-label>
+                    <input matInput  formControlName="order" id="input-password"
+                           placeholder="Password" type="text">
+                  </mat-form-field>
+                </div>
+
+<!--                <div class="col-lg-3 col-md-6">-->
+<!--                  <mat-form-field appearance="outline" *ngIf="!userId" class="form-group">-->
+<!--                    <mat-label  for="input-service">Attributes</mat-label>-->
+<!--                    <input matInput  formControlName="attributes" id="input-service"-->
+<!--                           placeholder="Attributes" type="text">-->
+<!--                  </mat-form-field>-->
+<!--                </div>-->
+                <div class="col-lg-3 col-md-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label>From date</mat-label>
+                    <input  [ngModelOptions]="{standalone: true}"  [(ngModel)]="slotDate"  matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker  #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3">
+                  <div *ngFor="let review of reviewType" class="row">
+                    <div class="col">
+                      {{review.name}}
+                    </div>
+                    <div class="col">
+                      <star-rating [value]="1" [totalstars]="5" checkedcolor="blueviolet" uncheckedcolor="black" size="24" readonly="false" (rate)="onRate($event, review.name, review._id)"></star-rating>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="save-button-cont">
+  <button class="save-all-button" (click)="addReview()" mat-raised-button>Add Review</button>
+  <button routerLink="/reviews" class="delete-all-button" mat-raised-button>Cancel</button>
+</div>

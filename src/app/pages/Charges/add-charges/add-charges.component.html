@@ -1,0 +1,89 @@
+<app-session-expire></app-session-expire>
+
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0" >Add Charges</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="chargeDetailsForm">
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-3 col-md-6">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label  for="input-name">Name</mat-label>
+                    <input matInput formControlName="name" type="text" id="input-name"  placeholder="Name">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label>Name_Fi</mat-label>
+                    <input matInput formControlName="name_fi" type="text" id="input-name"  placeholder="Name">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label  for="input-type">Type</mat-label>
+                    <input matInput  formControlName="type" type="text" id="input-type"  placeholder="Type">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label  for="input-price">Price</mat-label>
+                    <input matInput  formControlName="value" type="number" id="input-price"  placeholder="Price">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label  for="input-type">Amount type</mat-label>
+                    <mat-select formControlName="amountType" id="amount-type">
+                      <mat-option value="absolute">Absolute</mat-option>
+                      <mat-option value="percentage">Percentage</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-lg-3 col-md-6">
+                  <span>Enable/Disable</span>
+                  <div class="form-group" style="margin-top: 20px">
+                    <label  class="custom-toggle">
+                      <input formControlName="enable" [(ngModel)]="enable" type="checkbox">
+                      <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <hr class="my-4" />
+            <!-- Description -->
+            <div class="pl-lg-4">
+              <mat-form-field appearance="outline" class="form-group">
+                <mat-label>Charges description</mat-label>
+                <textarea matInput formControlName="description" rows="4"  placeholder="A few words about Charges ..."></textarea>
+              </mat-form-field>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="save-button-cont">
+  <button class="save-all-button" (click)="postCharges()" mat-raised-button>Add Charges</button>
+  <button routerLink="/charges" class="delete-all-button" mat-raised-button>Cancel</button>
+</div>

@@ -1,0 +1,77 @@
+<app-session-expire></app-session-expire>
+
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0" >Add Service</h3>
+            </div>
+<!--            <div class="col-4 text-right">-->
+<!--              <a  (click)="postService()" class="btn btn-sm btn-primary">Save</a>-->
+<!--              <a routerLink="/services" class="btn btn-sm btn-danger">Cancel</a>-->
+<!--            </div>-->
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="serviceDetailsForm">
+            <h6 class="heading-small text-muted mb-4">Add information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-4">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label for="input-service">Name</mat-label>
+                    <input matInput formControlName="name" type="text" id="input-service"  placeholder="Service Name">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-4">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label >Name_fi</mat-label>
+                    <input matInput formControlName="name_fi" type="text"  placeholder="Service Name">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-4">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label  for="input-type">Type</mat-label>
+                    <input matInput  formControlName="type" type="text" id="input-type"  placeholder="Type">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-4">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label  for="input-price">Price</mat-label>
+                    <input matInput  formControlName="price" type="number" id="input-price"  placeholder="Price">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <!-- Description -->
+            <div class="pl-lg-4">
+              <mat-form-field appearance="outline" class="form-group">
+                <mat-label>Service description</mat-label>
+                <textarea matInput formControlName="desc" rows="4"  placeholder="A few words about service ..."></textarea>
+              </mat-form-field>
+            </div>
+            <div class="pl-lg-4">
+              <mat-form-field appearance="outline" class="form-group">
+                <mat-label>Service description_fi</mat-label>
+                <textarea matInput formControlName="desc_fi" rows="4"  placeholder="A few words about service ..."></textarea>
+              </mat-form-field>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="save-button-cont">
+  <button class="save-all-button" (click)="postService()" mat-raised-button>Add Service</button>
+  <button routerLink="/service" class="delete-all-button" mat-raised-button>Cancel</button>
+</div>

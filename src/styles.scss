@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+@import '../node_modules/ngx-toastr/toastr.css';
+
+.save-button{
+  background-color: slateblue!important;
+  border-color: slateblue!important;
+}
+
+*tr:focus{
+  outline: none!important;
+}
+*tr:hover{
+  color: black!important;
+  cursor: pointer;
+}
+
+*input{
+  color: black!important;
+}
+
+select{
+  color: black!important;
+}
+.hover-highlight:hover{
+  color: black!important;
+  cursor: pointer!important;
+
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.ngx-timepicker{
+  display: inline-flex!important;
+  flex-grow: 1;
+}
+
+.full-width{
+  width: 100%;
+}
+
+.mat-form-field{
+  width: 100%;
+}
+
+.add-new-button{
+  background: teal;
+  color: white;
+  padding: 2px 30px;
+}
+
+.add-new-button-cont{
+text-align: right;
+  margin: 30px 40px;
+}
+.save-button-cont{
+text-align: center;
+  margin: 30px 40px;
+}
+
+.save-all-button{
+  background: dodgerblue;
+  color: white;
+  margin: 5px!important;
+  padding: 2px 30px;
+}
+.delete-all-button{
+  background: orangered;
+  color: white;
+  margin: 5px!important;
+  padding: 2px 30px;
+}

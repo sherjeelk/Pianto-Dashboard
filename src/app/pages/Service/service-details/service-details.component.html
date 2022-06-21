@@ -1,0 +1,132 @@
+<app-session-expire></app-session-expire>
+
+<app-loader *ngIf="progress"></app-loader>
+<div *ngIf="!progress">
+  <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center">
+    <!-- Mask -->
+    <span class="mask bg-gradient-danger opacity-8"></span>
+    <!-- Header container -->
+  </div>
+
+  <div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col">
+        <div class="card bg-secondary shadow">
+          <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h3 class="mb-0" >Service Details</h3>
+              </div>
+<!--              <div class="col-4 text-right">-->
+<!--                <a  (click)="updateService()" class="btn btn-sm btn-primary">Save</a>-->
+<!--                <a (click)="deleteService(serviceId)">Delete</a>-->
+<!--              </div>-->
+            </div>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="serviceDetailsForm">
+              <h6 class="heading-small text-muted mb-4"><span>ID: </span><span class=" hover-highlight" (click)="util.copy(serviceId)" matTooltip="Click to Copy">{{serviceId}}</span></h6>
+              <div class="pl-lg-4">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <mat-form-field appearance="outline" class="form-group">
+                      <mat-label> Name</mat-label>
+                      <input matInput formControlName="name" type="text" id="input-service"  placeholder="Service Name">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-4">
+                    <mat-form-field appearance="outline" class="form-group">
+                      <mat-label> Name_fi</mat-label>
+                      <input matInput formControlName="name_fi" type="text" id="input-service"  placeholder="Service Name">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-4">
+                    <mat-form-field appearance="outline" class="form-group">
+                      <mat-label>Type</mat-label>
+                      <input matInput  formControlName="type" type="text" id="input-type"  placeholder="Type">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-4">
+                    <mat-form-field appearance="outline" class="form-group">
+                      <mat-label>Price</mat-label>
+                      <input matInput  formControlName="price" type="number" id="input-price"  placeholder="Price">
+                    </mat-form-field>
+                  </div>
+
+                </div>
+              </div>
+              <!-- Description -->
+              <div class="pl-lg-4">
+                <mat-form-field appearance="outline" class="form-group">
+                  <mat-label>Service description</mat-label>
+                  <textarea matInput formControlName="desc" rows="4"  placeholder="A few words about service ..."></textarea>
+                </mat-form-field>
+              </div>
+              <div class="pl-lg-4">
+                <mat-form-field appearance="outline" class="form-group">
+                  <mat-label>Service description_fi</mat-label>
+                  <textarea matInput formControlName="desc_fi" rows="4"  placeholder="A few words about service ..."></textarea>
+                </mat-form-field>
+              </div>
+              <div class="row pl-lg-4">
+              <div class="col-lg-6">
+                  <span>Enable/Disable</span>
+
+                  <div class="form-group" style="margin-top: 20px">
+                    <label  class="custom-toggle">
+                      <input formControlName="enable" [(ngModel)]="enable" type="checkbox">
+                      <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
+                    </label>
+                  </div>
+                </div>
+
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+          <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+            <div class="modal-content bg-gradient-danger">
+
+              <div class="modal-header">
+                <h6 class="modal-title" id="modal-title-notification">Delete Service</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+
+              <div class="modal-body">
+
+                <div class="py-3 text-center">
+                  <i class="ni ni-bell-55 ni-3x"></i>
+                  <h4 class="heading mt-4">Are you sure to delete this Service</h4>
+                  <p>After deletion all the data related to this service will be lost</p>
+                </div>
+
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal" (click)="deleteService(serviceId)">Ok, Delete it</button>
+                <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Cancel</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="save-button-cont">
+  <button class="save-all-button" (click)="updateService()" mat-raised-button>Save service</button>
+  <button class="delete-all-button" (click)="deleteService(serviceId)" mat-raised-button>Delete Service</button>
+</div>

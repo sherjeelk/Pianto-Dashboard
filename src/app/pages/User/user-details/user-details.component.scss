@@ -1,0 +1,55 @@
+.chip{
+  background: #24b47e;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  margin: 5px;
+}
+
+.save{
+  background: teal;
+  color: white;
+}
+
+table , td, th{
+  padding: 10px!important;
+}
+
+table {
+  height: 300px;
+  overflow-y: scroll;
+  display: block;
+
+}
+
+thead, tbody{
+  width: 100%!important;
+  display: table;
+}
+
+.city-chip{
+  border: 1px solid #8a2be2;
+  color: #8a2be2;
+  border-radius: 18px;
+  margin: 5px;
+  padding: 5px 16px;
+}
+
+.save-area{
+  color: slateblue;
+  border: 1px solid slateblue;
+  border-radius: 16px;
+  margin-left: 10px;
+}
+
+.save-area:disabled{
+  border: none;
+  border-radius: 16px;
+  margin-left: 10px;
+}
+
+
+.delete-area{
+  color: orangered;
+  border: 1px solid orangered;
+}

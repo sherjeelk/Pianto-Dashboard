@@ -1,0 +1,365 @@
+<app-session-expire></app-session-expire>
+
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Add Order</h3>
+            </div>
+            <!--            <div class="col-4 text-right">-->
+            <!--              <a (click)="addOrderwithUserUpdate()" class="btn btn-sm btn-primary">Save</a>-->
+            <!--              <a class="btn btn-sm btn-danger" routerLink="/orders">Cancel</a>-->
+            <!--            </div>-->
+          </div>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="addOrder()" [formGroup]="addOrderForm">
+
+            <div class="pl-lg-4">
+
+              <!-- Address -->
+              <h6 class="heading-small text-muted mb-4">Piano Information</h6>
+
+              <div class="row">
+
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label for="input-service">Piano Name</mat-label>
+                    <input formControlName="pianoName" id="input-service" matInput minlength="3"
+                           placeholder="Piano Name" type="text">
+                    <mat-error>Please enter a valid name</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label for="input-type">Type</mat-label>
+                    <mat-select formControlName="type" id="input-type">
+                      <mat-option value="Grand piano">Grand Piano</mat-option>
+                      <mat-option value="Upright piano">Upright Piano</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label for="input-serial">Serial</mat-label>
+                    <input formControlName="serial" id="input-serial" matInput
+                           placeholder="Serial number" type="text">
+                    <mat-error>Please enter a valid serial number</mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label for="input-last-service">last service</mat-label>
+                    <input formControlName="lastService" id="input-last-service" matInput
+                           placeholder="last service" type="text">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-lg-3 ">
+                  <div class="form-group">
+                    <mat-form-field class="full-width" appearance="outline">
+                      <mat-label>From date</mat-label>
+                      <input [(ngModel)]="slotDate" [matDatepicker]="picker" [ngModelOptions]="{standalone: true}"
+                             matInput>
+                      <mat-error>Please enter valid date</mat-error>
+                      <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <mat-form-field appearance="outline" class="full-width">
+                      <mat-label>Time</mat-label>
+                      <input matInput formControlName="time" [format]="24" readonly [ngxTimepicker]="till" >
+                      <mat-error>Please enter a valid time</mat-error>
+
+                    </mat-form-field>
+                    <ngx-material-timepicker #till></ngx-material-timepicker>
+                </div>
+
+
+
+              </div>
+
+              <hr class="my-4"/>
+              <!-- Address -->
+              <h6 class="heading-small text-muted mb-4">Location and User information</h6>
+
+              <div class="row">
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label for="input-address">Address</mat-label>
+                    <input formControlName="address" id="input-address" matInput
+                           placeholder="Address" type="text">
+                    <mat-error>Please</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label for="input-last-name">City</mat-label>
+                    <input formControlName="city" id="input-city" matInput
+                           placeholder="City" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label for="input-post-code">Post code</mat-label>
+                    <input formControlName="postcode" id="input-post-code" matInput
+                           placeholder="Post Code" type="number">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label for="input-status">Customer Name</mat-label>
+                    <input formControlName="name" id="input-status" matInput
+                           placeholder="name">
+                  </mat-form-field>
+
+                </div>
+
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label for="input-last-name">Email</mat-label>
+                    <input formControlName="email" id="input-email" matInput
+                           placeholder="Email" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label for="input-phone">Phone</mat-label>
+                    <input formControlName="phone" id="input-phone" matInput maxlength="10" minlength="10"
+                           placeholder="Phone" type="text">
+                    <mat-error>Please enter a valid mobile</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <hr class="my-4"/>
+
+              <h6 class="heading-small text-muted mb-4">Payment information</h6>
+              <div class="row">
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label for="input-payment-method">Payment Method</mat-label>
+                    <input formControlName="paymentMethod" id="input-payment-method" matInput
+                           placeholder="Payment Method" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label for="input-last-name">Discount</mat-label>
+                    <input formControlName="discount" id="input-discount" matInput
+                           placeholder="Discount" type="number">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label for="input-coupon">Coupon</mat-label>
+                    <input formControlName="coupon" id="input-coupon" matInput
+                           placeholder="Coupon" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label for="input-last-name">Sub Total</mat-label>
+                    <input formControlName="subtotal" id="input-sub-total" matInput
+                           placeholder="Sub Total" type="number">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label for="input-last-name">Total</mat-label>
+                    <input formControlName="total" id="input-last-name" matInput
+                           placeholder="Rate" type="number">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label class="form-control-label">Status</mat-label>
+                    <mat-select formControlName="status" id="input-user"
+                                placeholder="Status">
+                      <mat-option value="PAYMENT_CONFIRMED">Payment Confirmed</mat-option>
+                      <mat-option value="COMPLETED">Completed</mat-option>
+                      <mat-option value="PENDING">Pending</mat-option>
+                      <mat-option value="REJECTED"  >Rejected(By Service man)</mat-option>
+                      <mat-option value="CANCELLED">Cancelled(By user)</mat-option>
+                      <mat-option value="PAYMENT_FAILED">Payment failed</mat-option>
+
+                    </mat-select>
+                  </mat-form-field>
+
+
+
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+            <div class="pl-lg-4">
+
+              <hr class="my-4"/>
+
+              <h6 class="heading-small text-muted mb-4">Others</h6>
+
+            </div>
+
+
+            <div class="pl-lg-4">
+              <div class="row">
+
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-select #chargeMultiSelect [formControl]="chargeMultiCtrl" [multiple]="true"
+                                placeholder="Charges">
+                      <mat-option>
+                        <ngx-mat-select-search [formControl]="chargeMultiFilterCtrl"
+                                               placeholderLabel="Find charges..."></ngx-mat-select-search>
+                      </mat-option>
+                      <mat-option *ngFor="let bank of filteredChargesMulti | async" [value]="bank">
+                        {{bank.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <p>
+                    Selected charges:
+                  </p>
+                  <ul *ngFor="let bank of chargeMultiCtrl?.value">
+                    <li>{{bank.name}}</li>
+                  </ul>
+                </div>
+
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-select #serviceMultiSelect [formControl]="serviceMultiCtrl" [multiple]="true"
+                                placeholder="Services">
+                      <mat-option>
+                        <ngx-mat-select-search [formControl]="serviceMultiFilterCtrl"
+                                               placeholderLabel="Find Service..."></ngx-mat-select-search>
+                      </mat-option>
+                      <mat-option *ngFor="let service of filteredServicesMulti | async" [value]="service">
+                        {{service.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <p>
+                    Selected services:
+                  </p>
+                  <ul *ngFor="let service of serviceMultiCtrl?.value">
+                    <li>{{service.name}}</li>
+                  </ul>
+                </div>
+                <div class="col-lg-3">
+<!--                  <mat-form-field appearance="outline" class="full-width ">-->
+<!--                    <mat-select #singleSelect [formControl]="serviceManCtrl" placeholder="Service Man">-->
+<!--                      <mat-option>-->
+<!--                        <ngx-mat-select-search [formControl]="userFilterCtrl" placeholderLabel="Find service man...">-->
+
+<!--                        </ngx-mat-select-search>-->
+<!--                      </mat-option>-->
+
+<!--                      <mat-option *ngFor="let user of filteredUsers | async" [value]="user">-->
+<!--                        {{user.name}}-->
+<!--                      </mat-option>-->
+<!--                    </mat-select>-->
+<!--                  </mat-form-field>-->
+
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Assign serviceman</mat-label>
+
+                    <input  [(ngModel)]="selectedServiceMan.id"  [ngModelOptions]="{standalone: true}"  minlength="3" autocomplete="off" (input)="getServiceMan('service', query.value)"
+
+                           class="w-full" matInput type="text"    #query>
+
+                  </mat-form-field>
+                  <div *ngIf="allServiceMan.length" (clickOutside)="onClickedOutside($event)" class="autocomplete-panel" id="autoBalloon">
+                    <mat-card>
+
+                      <div (click)="addServiceMan(result)"  *ngFor="let result of allServiceMan"
+                           class="t-left autocomplete-row">
+                        <div class="text-center border-bottom p-b-15" style="padding: 10px;cursor: pointer">{{result.name}}</div>
+                      </div>
+                    </mat-card>
+                  </div>
+
+                </div>
+
+                <div class="col-lg-3">
+                  <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Assign user</mat-label>
+                    <input [(ngModel)]="selectedUser.id"  [ngModelOptions]="{standalone: true}" minlength="3" autocomplete="off" (input)="getUser('user', queryUser.value)"
+                           class="w-full" matInput type="text" #queryUser>
+                  </mat-form-field>
+                  <div *ngIf="allUser.length" (clickOutside)="onClickedOutsideUser($event)" class="autocomplete-panel">
+                    <mat-card>
+                      <div (click)="addUser(result)"  *ngFor="let result of allUser"
+                           class="t-left autocomplete-row">
+                        <div class="text-center border-bottom p-b-15" style="padding: 10px;cursor: pointer">{{result.name}}</div>
+                      </div>
+                    </mat-card>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class="pl-lg-4">
+
+              <hr class="my-4"/>
+
+              <h6 class="heading-small text-muted mb-4">Completion <small><i>*If you are marking status as complete</i></small></h6>
+
+
+            </div>
+
+
+            <div class="pl-lg-4">
+              <div class="row">
+
+                <div class="col-lg-6">
+                  <div class="m-t-10" *ngFor="let ques of answers">
+                    <div>Q : {{ques.question}}</div>
+                    <mat-form-field>
+                      <mat-label>Answer</mat-label>
+                      <label>
+                        <input  [ngModelOptions]="{standalone: true}" matInput minlength="1" type="text" [value]="ques.answer" [(ngModel)]="ques.answer">
+                      </label>
+                      <mat-error>Please enter an answer</mat-error>
+
+                    </mat-form-field>
+
+                  </div>
+
+                </div>
+
+
+              </div>
+            </div>
+            <div class="save-button-cont">
+              <button type="submit" class="save-all-button" mat-raised-button>Add Order</button>
+              <button class="delete-all-button" mat-raised-button routerLink="/orders">Cancel</button>
+            </div>
+
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

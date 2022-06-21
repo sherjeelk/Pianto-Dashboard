@@ -1,0 +1,386 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" *ngIf="userData">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+</div>
+
+<div class="container-fluid mt--7" *ngIf="userData">
+  <div class="row">
+    <div class="col">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">User Details</h3>
+            </div>
+<!--            <div class="col-4 text-right">-->
+<!--              <a  (click)="updateUser()" class="btn btn-sm btn-primary">Save</a>-->
+<!--              <a (click)="deleteUser(userId)" class="btn btn-sm btn-danger">Delete</a>-->
+<!--            </div>-->
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="userDetailsForm">
+            <h6 class="heading-small text-muted mb-4"><span>ID: </span><span class=" hover-highlight" (click)="util.copy(userId)" matTooltip="Click to Copy">{{userId}}</span></h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-3 col-md-6">
+                   <mat-form-field appearance="outline" class="form-group">
+                    <mat-label  for="input-username">Name</mat-label>
+                    <input matInput  formControlName="name" id="input-username"
+                           placeholder="Full Name" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                   <mat-form-field  appearance="outline" class="form-group">
+                    <mat-label class="form-control-label" for="input-lastname">last Name</mat-label>
+                    <input matInput  formControlName="lastName" id="input-lastname"
+                           placeholder="Last Name" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                   <mat-form-field  appearance="outline" class="form-group">
+                    <mat-label for="input-email">Email address</mat-label>
+                    <input matInput  formControlName="email" id="input-email"
+                           placeholder="Email Address" type="email">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label  for="input-username">Phone</mat-label>
+                    <input matInput  formControlName="phone" id="input-phone"
+                           placeholder="Phone" type="text">
+                  </mat-form-field>
+                </div>
+
+              </div>
+              <div class="row">
+
+                <div class="col-lg-3 col-md-6">
+                   <mat-form-field appearance="outline" class="form-group">
+                    <mat-label  for="input-password">Password</mat-label>
+                    <input matInput  formControlName="password" id="input-password"
+                           placeholder="Password" type="password">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                   <mat-form-field appearance="outline"  class="form-group">
+                    <mat-label  for="input-service">Service</mat-label>
+                    <input matInput  formControlName="service" id="input-service"
+                           placeholder="Service" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label  for="input-role">Role</mat-label>
+                    <mat-select formControlName="role" id="input-role">
+                      <mat-option value="user">user</mat-option>
+                      <mat-option value="admin">admin</mat-option>
+                      <mat-option value="service">service</mat-option>
+                    </mat-select></mat-form-field>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                  <mat-form-field appearance="outline" class="form-group">
+                    <mat-label  for="input-last-name">Rate</mat-label>
+                    <input matInput  formControlName="rate" id="input-last-name"
+                           placeholder="Rate" type="number">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+
+              </div>
+            </div>
+            <hr class="my-4"/>
+            <!-- Address -->
+            <h6 class="heading-small text-muted mb-4">Location information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-4">
+                   <mat-form-field appearance="outline" class="form-group">
+                    <mat-label  for="input-country">Country</mat-label>
+                    <input matInput  formControlName="country" id="input-country"
+                           placeholder="Country" type="text">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-lg-4">
+                   <mat-form-field appearance="outline" class="form-group">
+                    <mat-label  for="input-country">Default Postal code</mat-label>
+                    <input matInput  formControlName="postcode" id="input-postal-code"
+                           placeholder="Postal code" type="number">
+                  </mat-form-field>
+                </div>
+
+              </div>
+
+<!--              <div class="row">-->
+<!--                <div class="col-lg-4">-->
+<!--                   <mat-form-field appearance="outline" class="form-group">-->
+<!--                    <mat-label  for="input-post">Enter postcode to add city</mat-label>-->
+<!--                    <input matInput   id="input-post"-->
+<!--                           #postcode maxlength="5"  (input)="onSearchChange($event.target.value)"   placeholder="postcode" type="text">-->
+<!--                  </mat-form-field>-->
+<!--                </div>-->
+
+<!--                <div class="col-lg-4">-->
+<!--                   <mat-form-field appearance="outline" class="form-group">-->
+<!--                    <mat-label  for="input-city">City</mat-label>-->
+<!--                    <input matInput  formControlName="city" id="input-city"-->
+<!--                           style="cursor: not-allowed"  readonly  [(ngModel)]="post"   placeholder="City" type="text">-->
+<!--                  </mat-form-field>-->
+<!--                </div>-->
+<!--                <div class="col-lg-4 align-self-center">-->
+<!--                  <button mat-flat-button class="save" [disabled]="disable" (click)="addCity(post)">Add City</button>-->
+<!--                </div>-->
+
+<!--              </div>-->
+<!--              <div *ngIf="city.length > 0"><span class="chip" *ngFor="let loc of city"><span>{{loc.name}} <span (click)="removeCity(loc)" style="margin-left: 5px">X</span></span></span></div>-->
+
+            </div>
+
+            <hr class="my-4"/>
+            <!-- Address -->
+            <h6>Area</h6>
+            <h3 class="my-3">
+              <h3>Add new area</h3>
+            </h3>
+            <div class="row">
+              <div class="col">
+                <div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Area name</mat-label>
+                      <input type="text" placeholder="Area name" matInput required #area>
+                    </mat-form-field>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Postcode</mat-label>
+                        <input (input)="onSearchChange($event.target.value)" type="text" minlength="5" maxlength="5" placeholder="Postcode" matInput>
+                      </mat-form-field>
+                    </div>
+                    <div class="col">
+                      <mat-form-field appearance="outline">
+                        <mat-label>City</mat-label>
+                        <input required  [(ngModel)]="post" readonly type="text" formControlName="slotCity" placeholder="City" matInput>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div *ngIf="areaCity.length > 0" class="mb-3 row">
+                    <span (click)="removeAreaCity(town)" class="city-chip" *ngFor="let town of areaCity">
+                 {{town}} <span><svg style="width:16px;height:16px" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M13.46,12L19,17.54V19H17.54L12,13.46L6.46,19H5V17.54L10.54,12L5,6.46V5H6.46L12,10.54L17.54,5H19V6.46L13.46,12Z" />
+                    </svg></span>
+             </span>
+                  </div>
+                  <div>
+                    <button mat-flat-button color="primary" [disabled]="!post"  (click)="addCityForArea(post)">Add City</button>
+                    <button class="w-full mt-2 save-area" mat-flat-button (click)="saveArea(area.value)" [disabled]="(!area.value) || (areaCity.length === 0)">Save Area</button>
+
+                  </div>
+                </div>
+
+              </div>
+              <div class="col">
+                <div  *ngIf="userData.city.length > 0">
+                  <h3>Slot Details</h3>
+                </div>
+
+                <table class="table" *ngIf="userData.city.length> 0;else noAreaAdded">
+                  <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Cities</th>
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let item of userData.city">
+                    <td>{{item.name}}</td>
+                    <td>{{item.data}}</td>
+
+                    <td (click)="deleteArea(item)">Remove</td>
+                  </tr>
+                  </tbody>
+
+
+                </table>
+                <ng-template #noAreaAdded>
+                  <h3>Area Details</h3>
+                  <hr>
+                  <h3 class="text-center">No area found!</h3>
+                </ng-template>
+
+              </div>
+            </div>
+            <h6 class="heading-small text-muted mb-4">Slots</h6>
+
+            <div class="row">
+              <div class="col">
+                <div class="row">
+                  <div class="col">
+                    <mat-form-field class="full-width" appearance="outline">
+                      <mat-label>Slot Date</mat-label>
+                      <input [ngModelOptions]="{standalone: true}"  [(ngModel)]="slotDate"  matInput [matDatepicker]="picker">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker  #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  </div>
+
+                <div class="row">
+
+                  <div class="col">
+                    <mat-form-field appearance="outline" class="full-width">
+                      <mat-label>From Time</mat-label>
+                      <input matInput formControlName="from" [format]="24" readonly [ngxTimepicker]="from" >
+                    </mat-form-field>
+                    <ngx-material-timepicker #from></ngx-material-timepicker>
+                  </div>
+
+                  <div class="col">
+                    <mat-form-field appearance="outline" class="full-width">
+                      <mat-label>Till Time</mat-label>
+                      <input matInput formControlName="till" [format]="24" readonly [ngxTimepicker]="till" >
+                    </mat-form-field>
+                    <ngx-material-timepicker #till></ngx-material-timepicker>
+                  </div>
+                </div>
+                <div class="row">
+<!--                  <div class="col">-->
+<!--                    <div class="ngx-timepicker-field-example my-1">-->
+<!--                      <mat-form-field appearance="outline" class="w-full">-->
+<!--                        <mat-label>Postcode</mat-label>-->
+<!--                        <input aria-label="From" formControlName="slotPostcode"-->
+<!--                               matInput placeholder="Postcode" min="5" max="5"  (input)="onSearchChange($event.target.value)">-->
+<!--                      </mat-form-field>-->
+<!--                    </div>-->
+<!--                  </div>-->
+
+<!--                  <div class="col">-->
+
+<!--                    <div class="ngx-timepicker-field-example my-1">-->
+<!--                      <mat-form-field appearance="outline" class="w-full">-->
+<!--                        <mat-label>City</mat-label>-->
+<!--                        <input [(ngModel)]="post"  formControlName="slotCity" matInput placeholder="City"  readonly>-->
+<!--                      </mat-form-field>-->
+<!--                    </div>-->
+<!--                  </div>-->
+
+
+                  <div class="ngx-timepicker-field-example my-1 col">
+
+
+                    <div *ngIf="userData.city.length > 0; else noArea">
+                      <mat-form-field class="full-width"  appearance="fill">
+                      <mat-label>Choose Area</mat-label>
+                        <mat-select formControlName="area">
+                          <mat-option *ngFor="let city of userData.city" [value]="city.data">
+                            {{city.name | uppercase}}
+                       </mat-option>
+                  </mat-select>
+                     </mat-form-field>
+
+                      <div  class="col-lg-3 text-left">
+                        <button type="button" mat-flat-button class="save" [disabled]="userDetailsForm.value.from === '' || userDetailsForm.value.till === '' || userDetailsForm.value.area === ''" (click)="saveSlot()">Add Slot</button>
+                      </div>
+                </div>
+
+
+                  </div>
+                </div>
+
+
+              </div>
+              <div class="col">
+                <div  *ngIf="slot.length > 0">
+                  <h3>Slot Details</h3>
+                </div>
+
+                <table class="table" *ngIf="slot.length > 0;else noSlot">
+                  <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>From</th>
+                    <th>Till</th>
+                    <th>city</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let item of slot">
+                    <td>{{util.getHumanShortDate(item.date)}}</td>
+                    <td>{{item.from}}</td>
+                    <td>{{item.till}}</td>
+                    <td>{{item.city}}</td>
+                    <td (click)="removeSlot(item)">Remove</td>
+                  </tr>
+                  </tbody>
+
+
+                </table>
+                <ng-template #noSlot>
+                  <h3>Slot Details</h3>
+                  <hr>
+                  <h3 class="text-center">No slots found!</h3>
+                </ng-template>
+
+              </div>
+
+<!--              <div *ngIf="slot.length > 0"><span *ngFor="let item of slot" class="chip">{{item.from}}- {{item.till}}<span (click)="removeSlot(item)" style="margin-left: 5px">X</span></span></div>-->
+            </div>
+            <ng-template #noArea>
+              <h5 style="margin-left: 20px">You need to add area to create slot<sup>*</sup></h5>
+
+            </ng-template>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-session-expire></app-session-expire>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+      <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+        <div class="modal-content bg-gradient-danger">
+
+          <div class="modal-header">
+            <h6 class="modal-title" id="modal-title-notification">Delete User</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+
+            <div class="py-3 text-center">
+              <i class="ni ni-bell-55 ni-3x"></i>
+              <h4 class="heading mt-4">Are you sure to delete this user</h4>
+              <p>After deletion all the data related to this user will be lost</p>
+            </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <button  (click)="deleteUser(userId)" type="button" class="btn btn-white">Ok, Delete it</button>
+            <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Cancel</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="save-button-cont">
+  <button class="save-all-button" (click)="updateUser()" mat-raised-button>Save User</button>
+  <button class="delete-all-button" (click)="deleteUser(userId)" mat-raised-button>Delete User</button>
+</div>
+
